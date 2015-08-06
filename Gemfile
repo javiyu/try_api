@@ -5,6 +5,6 @@ gem 'rails', '4.2.3'
 gem 'pg'
 
 group :development, :test do
-  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0'
 end
 
