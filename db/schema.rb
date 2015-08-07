@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20150807083935) do
   create_table "events", force: :cascade do |t|
     t.string  "name",     null: false
     t.integer "sport_id", null: false
+    t.integer "user_id",  null: false
   end
 
   add_index "events", ["name"], name: "index_events_on_name", using: :btree
   add_index "events", ["sport_id"], name: "index_events_on_sport_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150807083935) do
   add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
   add_foreign_key "events", "sports"
+  add_foreign_key "events", "users"
   add_foreign_key "permissions_roles", "permissions"
   add_foreign_key "permissions_roles", "roles"
   add_foreign_key "sports", "users"

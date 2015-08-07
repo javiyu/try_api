@@ -1,17 +1,12 @@
 require "rails_helper"
 
-class AuthenticatedController < Api::ApiController
-  def index
-    render text: 'response'
+RSpec.describe Api::ApiController, type: :controller do
+  controller do
+    def index
+      render text: 'response'
+    end
   end
-end
 
-Rails.application.routes.draw do
-  resources :authenticated
-end
-
-
-RSpec.describe AuthenticatedController, type: :controller do
   context "For a controller that inherits from ApiController" do
     describe "GET #index" do
       it "responds unauthorized if no authentication headers are set" do
